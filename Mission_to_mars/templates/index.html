@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron text-center">
+          <h1>Mars News</h1>
+          <p>David Fried</p>
+          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+      </div>
+      <h2>{{ mars.News_Title }}</h2>
+      <p>{{ mars.News_Paragraph }}</p>
+      <!-- Featured Image -->
+      <div class="col-md-7">
+        <h1 class="display-5" ALIGN="left">Featured Image</h1>
+        <hr class="my-4">
+        <img src="{{ mars.Featured_Image }}" width="500" height="275" ALIGN="left"/>
+        </div>
+        <div class="col-md-5">
+        <h1 class="display-5" ALIGN="left">Mars Facts</h1>
+        <br>
+        <div style="max-width: 450px; max-height: 150px; font-size: 15px; margin-bottom: 400px;">
+          {{ mars.Mars_Table|safe }}
+      </div>
+    </div>
+    <div class="container">
+        <div class="row">
+        <div class="col">
+        {% for hemisphere in mars.Hemisphere_Data %}
+        <div class="col-md-5"style="background-color:lavenderblush;">
+            <img title="{{ hemisphere.title }}" src="{{ hemisphere.img_url }}" class="img-thumbnail" alt="Mars" width="304" height="236">
+        </div>
+        {% endfor %}
+        </div>
+      </div> 
+      </div>
+    </div> 
+  </body>
+</html>
